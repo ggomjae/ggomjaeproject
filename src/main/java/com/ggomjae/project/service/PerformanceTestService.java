@@ -1,5 +1,6 @@
 package com.ggomjae.project.service;
 
+import com.ggomjae.project.dto.request.RequestSavePostDto;
 import com.ggomjae.project.entity.post.Post;
 import com.ggomjae.project.entity.post.PostRepository;
 import com.ggomjae.project.entity.reply.ReplyRepository;
@@ -19,5 +20,9 @@ public class PerformanceTestService {
         Post post = postRepository.findById(pno).orElseThrow(()->
             new Exception("Not found Post"));
         System.out.println(post);
+    }
+
+    public void savePost(RequestSavePostDto requestSavePostDto){
+        postRepository.save(requestSavePostDto.toPost());
     }
 }

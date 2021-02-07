@@ -1,10 +1,9 @@
 package com.ggomjae.project.controller;
 
+import com.ggomjae.project.dto.request.RequestSavePostDto;
 import com.ggomjae.project.service.PerformanceTestService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RequiredArgsConstructor
 @RestController
@@ -15,5 +14,10 @@ public class PerformanceTestController {
     @GetMapping("/test/{pno}")
     public void testPerformanceMethod(@PathVariable Long pno) throws Exception {
         performanceTestService.testPerformanceMethod(pno);
+    }
+
+    @PostMapping("/posts")
+    public void savePost(@RequestBody RequestSavePostDto requestSavePostDto){
+        performanceTestService.savePost(requestSavePostDto);
     }
 }
